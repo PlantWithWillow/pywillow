@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pywillow"
+version = "0.1.0"
+description = "Async Python client for the Willow plant sensor API"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+authors = [
+    { name = "PaxPrz", email = "paxprajapati@gmail.com" },
+]
+maintainers = [
+    { name = "PW Willow Pty Ltd" },
+]
+keywords = ["willow", "plant", "sensor", "api", "async", "aiohttp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "aiohttp>=3.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/PlantWithWillow/pywillow"
+Repository = "https://github.com/PlantWithWillow/pywillow"
+Issues = "https://github.com/PlantWithWillow/pywillow/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pywillow"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.ruff]
+src = ["src", "tests"]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+strict = true
+files = ["src/pywillow"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "aioresponses>=0.7",
+    "ruff>=0.12",
+    "mypy>=1.17",
+    "pre-commit>=4.0",
+]
